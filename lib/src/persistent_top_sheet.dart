@@ -55,7 +55,8 @@ class PersistentTopSheet extends StatefulWidget {
   State<PersistentTopSheet> createState() => _PersistentTopSheetState();
 }
 
-class _PersistentTopSheetState extends State<PersistentTopSheet> with SingleTickerProviderStateMixin {
+class _PersistentTopSheetState extends State<PersistentTopSheet>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animController;
   late Animation<double> _anim;
   late PersistentTopSheetController _controller;
@@ -99,7 +100,8 @@ class _PersistentTopSheetState extends State<PersistentTopSheet> with SingleTick
     widget.onStateChanged?.call(_controller.isOpen);
   }
 
-  Future<void> _runAnimation(double targetHeight, Offset pixelsPerSecond) async {
+  Future<void> _runAnimation(
+      double targetHeight, Offset pixelsPerSecond) async {
     _anim = _animController.drive(
       Tween<double>(
         begin: _crtHeight,
@@ -121,12 +123,14 @@ class _PersistentTopSheetState extends State<PersistentTopSheet> with SingleTick
   }
 
   Future<void> _open({Offset? pixelsPerSecond}) async {
-    await _runAnimation(widget.maxHeight, pixelsPerSecond ?? Offset(0, widget.animationSpeed));
+    await _runAnimation(
+        widget.maxHeight, pixelsPerSecond ?? Offset(0, widget.animationSpeed));
     _controller.open();
   }
 
   Future<void> _close({Offset? pixelsPerSecond}) async {
-    await _runAnimation(widget.minHeight, pixelsPerSecond ?? Offset(0, -widget.animationSpeed));
+    await _runAnimation(
+        widget.minHeight, pixelsPerSecond ?? Offset(0, -widget.animationSpeed));
     _controller.close();
   }
 
@@ -146,13 +150,16 @@ class _PersistentTopSheetState extends State<PersistentTopSheet> with SingleTick
 
               if (velocity.abs() > widget.animationSpeed / 2) {
                 // If the drag velocity is fast enough, decide based on the direction
-                velocity > 0 ? _open(pixelsPerSecond: details.velocity.pixelsPerSecond) : _close(pixelsPerSecond: details.velocity.pixelsPerSecond);
+                velocity > 0
+                    ? _open(pixelsPerSecond: details.velocity.pixelsPerSecond)
+                    : _close(pixelsPerSecond: details.velocity.pixelsPerSecond);
               } else {
                 // If the velocity is slow, decide based on the current height
                 _crtHeight > widget.maxHeight / 2 ? _open() : _close();
               }
             },
-            onVerticalDragUpdate: (DragUpdateDetails details) => _setHeight(_crtHeight + details.delta.dy),
+            onVerticalDragUpdate: (DragUpdateDetails details) =>
+                _setHeight(_crtHeight + details.delta.dy),
             child: widget.handleBuilder?.call(_crtHeight) ?? const SizedBox(),
           )
         else

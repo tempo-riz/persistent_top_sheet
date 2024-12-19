@@ -28,14 +28,16 @@ class MainApp extends StatelessWidget {
                 maxHeight: constraints.maxHeight - 48,
                 minHeight: 50,
                 controller: controller,
-                childBuilder: (currentHeight) => SheetBody(currentHeight: currentHeight),
+                childBuilder: (currentHeight) =>
+                    SheetBody(currentHeight: currentHeight),
                 handleBuilder: (currentHeight) => const DragHandle(),
                 onStateChanged: (state) => debugPrint('isOpen: $state'),
               );
             }),
             Center(
               child: ElevatedButton(
-                onPressed: controller.toggle, // you can also use open() or close()
+                onPressed:
+                    controller.toggle, // you can also use open() or close()
                 child: const Text('Toggle open/close'),
               ),
             ),
@@ -81,7 +83,8 @@ class DragHandle extends StatelessWidget {
         height: kMinInteractiveDimension,
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.surface,
-          borderRadius: const BorderRadius.vertical(bottom: Radius.circular(24)),
+          borderRadius:
+              const BorderRadius.vertical(bottom: Radius.circular(24)),
         ),
         child: Center(
           child: Container(
