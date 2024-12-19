@@ -54,16 +54,14 @@ First create the client with optional parameters
 // otherwise you can drag the handle by default
 final controller = PersistentTopSheetController();
 
-return PersistentTopSheet(
-  maxHeight: 500,
-  minHeight: 50,
-  controller: controller,
-  childBuilder: (currentHeight) =>
-      SheetBody(currentHeight: currentHeight),
-  handleBuilder: (currentHeight) => const DragHandle(),
-  onStateChanged: (state) => debugPrint('isOpen: $state'),
+PersistentTopSheet(
+    maxHeight: 500,
+    minHeight: 50,
+    controller: controller,
+    childBuilder: (currentHeight) => SheetBody(currentHeight: currentHeight),
+    handleBuilder: (currentHeight) => const DragHandle(),
+    onStateChanged: (state) => debugPrint('isOpen: $state'),
 );
-
 ```
 
 There is a ready-to-use example in the `/example` folder.
