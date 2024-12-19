@@ -1,10 +1,10 @@
 name: persistent_top_sheet
-description: "Add fully customisable top sheets to your flutter apps, anchored at the top and controllable via gestures or controller."
+description: "Add fully customisable top sheets to your flutter app, anchored at the top and controllable via gestures or controller."
 version: 1.0.0
 repository: https://github.com/tempo-riz/persistent_top_sheet
 
 environment:
-  sdk: ^3.5.4
+  sdk: ^3.0.0
   flutter: ">=1.17.0"
 
 dependencies:
