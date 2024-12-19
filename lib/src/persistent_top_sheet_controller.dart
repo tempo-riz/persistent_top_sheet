@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 
 /// The controller that can be used to open, close, or toggle the top sheet.
 class PersistentTopSheetController extends ChangeNotifier {
-  bool _isOpen = false;
+  PersistentTopSheetController({bool initialIsOpen = false})
+      : _isOpen = initialIsOpen;
+
+  bool _isOpen;
 
   /// Whether the top sheet is open.
   bool get isOpen => _isOpen;

@@ -18,6 +18,7 @@ class PersistentTopSheet extends StatefulWidget {
     this.initialHeight,
     this.isDraggable = true,
     this.onStateChanged,
+    this.onHeightChanged,
   });
 
   /// The controller that can be used to open, close, or toggle the top sheet.
@@ -50,6 +51,9 @@ class PersistentTopSheet extends StatefulWidget {
 
   /// Called on open (true) or close (false).
   final void Function(bool)? onStateChanged;
+
+  /// Called when the height of the top sheet changes.
+  final void Function(double)? onHeightChanged;
 
   @override
   State<PersistentTopSheet> createState() => _PersistentTopSheetState();
@@ -89,6 +93,7 @@ class _PersistentTopSheetState extends State<PersistentTopSheet>
     setState(() {
       _crtHeight = newHeight.clamp(widget.minHeight, widget.maxHeight);
     });
+    widget.onHeightChanged?.call(_crtHeight);
   }
 
   void _onControllerChanged() {
@@ -123,15 +128,15 @@ class _PersistentTopSheetState extends State<PersistentTopSheet>
   }
 
   Future<void> _open({Offset? pixelsPerSecond}) async {
+    _controller.open();
     await _runAnimation(
         widget.maxHeight, pixelsPerSecond ?? Offset(0, widget.animationSpeed));
-    _controller.open();
   }
 
   Future<void> _close({Offset? pixelsPerSecond}) async {
+    _controller.close();
     await _runAnimation(
         widget.minHeight, pixelsPerSecond ?? Offset(0, -widget.animationSpeed));
-    _controller.close();
   }
 
   @override
