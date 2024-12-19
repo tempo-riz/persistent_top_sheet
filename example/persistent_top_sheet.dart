@@ -23,7 +23,6 @@ class MainApp extends StatelessWidget {
         body: Stack(
           children: [
             LayoutBuilder(builder: (context, constraints) {
-              // get the screen height
               return PersistentTopSheet(
                 maxHeight: constraints.maxHeight - 48,
                 minHeight: 50,
