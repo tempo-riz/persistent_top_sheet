@@ -22,6 +22,8 @@ flutter pub publish --dry-run
 
 Add fully customisable top sheets to your flutter apps, anchored at the top and controllable via gestures or controller.
 
+[![Pub Version](https://img.shields.io/pub/v/persistent_top_sheet)](https://pub.dev/packages/persistent_top_sheet)
+
 You need something else ? Feel free to create issues, contribute to this project or to ask for new features on [GitHub](https://github.com/tempo-riz/persistent_top_sheet) !
 
 
